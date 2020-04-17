@@ -1,0 +1,59 @@
+[
+	{
+		"country": "SG",
+		"startTime": "01:50",
+		"endTime": "08:10",
+		"amountLimit": "500000",
+		"currency": "SGD",
+		"currencyPrecision": "2",
+		"zoneId": "Asia/Singapore",
+		"defaultZoneId": "Asia/Kolkata",
+		"limitBurstAlert": {
+			"limitBurstPercentage": [
+				"60",
+				"80"
+			],
+			"toEmail":"operation@citi.com",
+			"fromEmail":"InstantPmtThrottlingNam@citi.com",
+			"subject":"Instant Payment Limit Breach for Singapore dated"
+		}
+	},
+	{
+		"country": "TH",
+		"startTime": "02:00",
+		"endTime": "08:00",
+		"amountLimit": "500000",
+		"currency": "THB",
+		"currencyPrecision": "2",
+		"zoneId": "Asia/Bangkok",
+		"defaultZoneId": "Asia/Kolkata",
+		"limitBurstAlert": {
+			"limitBurstPercentage": [
+				"40",
+				"70"
+			],
+			"toEmail":"operation@citi.com",
+			"fromEmail":"InstantPmtThrottlingNam@citi.com",
+			"subject":"Instant Payment Limit Breach for Thailand dated"
+		}
+	},
+	{
+		"country": "ID",
+		"startTime": "02:00",
+		"endTime": "08:00",
+		"amountLimit": "500000",
+		"currency": "IDR",
+		"currencyPrecision": "0",
+		"zoneId": "Asia/Jakarta",
+		"defaultZoneId": "Asia/Kolkata",
+		"limitBurstAlert": {
+			"limitBurstPercentage": [
+				"50",
+				"85"
+			],
+			"toEmail":"operation@citi.com",
+			"fromEmail":"InstantPmtThrottlingNam@citi.com",
+			"subject":"Instant Payment Limit Breach for Indonesia dated"
+		}
+	}
+]

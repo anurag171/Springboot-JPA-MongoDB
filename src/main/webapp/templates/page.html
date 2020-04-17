@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Action Form</h1>
+    <form th:action="@{/push}" th:object="${dataModel}" method="post">
+        <p>Url: <input type="text" th:field="*{url}"></p>
+        <p>Mime Type: <input type="text" th:field="*{mimeType}"/></p>
+		<p>Messages: <textarea th:field="*{textareaField}" ></textarea></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>
+</body>
+</html>
