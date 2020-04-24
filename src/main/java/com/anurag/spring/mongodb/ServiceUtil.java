@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import org.slf4j.Logger;
@@ -90,5 +91,14 @@ public class ServiceUtil {
 	
 	public void getArchivePaymentForCountry(String country) {
 		
+	}
+
+	public void refreshValues(CountryThrottlingData data, Map<String, Object> mapdata) {
+		data.setStartTime(String.valueOf(mapdata.get("startDateTime")));
+		data.setEndTime(String.valueOf(mapdata.get("endDateTime")));
+		data.setAmountLimit(String.valueOf(mapdata.get("throttlingAmount")));
+		data.setAmountLimit(String.valueOf(mapdata.get("throttlingAmount")));
+		data.setBusinessDate(String.valueOf(mapdata.get("isBusinessDate")));
+		data.setNextBusinessDate(String.valueOf(mapdata.get("nextBusinessDate")));
 	}
 }

@@ -67,7 +67,7 @@ public class BeanRepo {
 			List<CountryThrottlingData>	 entities =  gson.fromJson(contentBuilder.toString(), new TypeToken<List<CountryThrottlingData>>(){}.getType());
 			countryrepo.saveAll(entities);
 			@SuppressWarnings("unchecked")
-			Map<String,CountryThrottlingData> dataMap = 	  context.getBean("throttlingBean",Map.class);
+			Map<String,CountryThrottlingData> dataMap = context.getBean("throttlingBean",Map.class);
 			for(CountryThrottlingData data :entities) {
       		 dataMap.put(data.getCountry(), data);
       	  }			

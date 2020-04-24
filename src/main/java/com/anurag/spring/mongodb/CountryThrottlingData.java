@@ -9,7 +9,7 @@ public class CountryThrottlingData {
 
 	@Id
 	private String country;
-
+	
 	private String startTime;
 
 	private String endTime;
@@ -18,11 +18,16 @@ public class CountryThrottlingData {
 
 	private String currency;
 
+	
 	private String currencyPrecision;
 
 	private String zoneId;
 
 	private String defaultZoneId;
+	
+	private String businessDate;
+	
+	private String nextBusinessDate;
 	
 	private LimitBurstAlert limitBurstAlert;
 
@@ -97,5 +102,21 @@ public class CountryThrottlingData {
 
 	public void setLimitBurstAlert(LimitBurstAlert limitBurstAlert) {
 		this.limitBurstAlert = limitBurstAlert;
+	}
+
+	public String getBusinessDate() {
+		return businessDate;
+	}
+
+	public void setBusinessDate(String businessDate) {
+		this.businessDate = businessDate;
+	}
+
+	public String getNextBusinessDate() {
+		return nextBusinessDate;
+	}
+
+	public void setNextBusinessDate(String nextBusinessDate) {
+		this.nextBusinessDate = nextBusinessDate;
 	}
 }
