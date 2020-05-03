@@ -3,6 +3,8 @@ package com.anurag.spring.mongodb;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
+import com.anurag.spring.mongodb.staging.CountryStagingData;
+
 public interface TransactionDao {
 		
 	void flushConfigurationOnStartUp();
@@ -16,5 +18,10 @@ public interface TransactionDao {
 		
 		boolean archivePayments(ArchivedPayments archivepayments);
 		
-		void getArchivePayments(String country,CountryThrottlingData countryData);
+		void getArchivePayments(String country,CountryThrottlingData countryData, Integer fetchSize);
+		
+		void auditDailyTransactionsLimit(String country, ZonedDateTime zonedDateTime,
+				BigDecimal messgaeAmountBd,String sign);
+		
+		boolean persistDailyTransactions(CountryStagingData messageData);
 }

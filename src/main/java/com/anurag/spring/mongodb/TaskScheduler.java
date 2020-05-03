@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import sun.misc.BASE64Encoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,13 +50,17 @@ public class TaskScheduler {
 
 	@Value(value = "http://localhost:8080/api/country/%s")
 	String uritemplate;
+	
+	@Value(value="500" )
+	Integer fetchSize;
 
 	@Scheduled(cron = "0/60 * * * * ?")
-	// @Scheduled(fixedRate = 120000, initialDelay = 20000)
 	public boolean reload() throws IOException {
 
 		logger.error("#############START RELOAD###############" + LocalDateTime.now());
 		try {
+			String authenticationString = "admin@gmail.com:$2a$10$LIbhsSme/aJNZVBJoVW5Ke9uandT7Z0kWPUqYRfTlTFmex.I3DZuy";
+			String authStringEnc = new BASE64Encoder().encode(authenticationString.getBytes());
 			List<CountryThrottlingData> dbentities = countryrepo.findAll();
 			@SuppressWarnings("unchecked")
 			Map<String,CountryThrottlingData> dataMap = _context.getBean("throttlingBean",Map.class);
@@ -70,21 +75,23 @@ public class TaskScheduler {
 			}
 			countryrepo.saveAll(dbentities);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return false;
 		}
+
 		logger.error("#############END RELOAD###############" + LocalDateTime.now());
 		return true;
 
 	}
 
 
-	@Scheduled(cron = "0/360 * * * * ?")
+	@Scheduled(cron = "0/60 * * * * ?")
 	public void processArchivePayments() throws IOException {
 		logger.error("#############START Unarchival###############" + LocalDateTime.now());
 		@SuppressWarnings("unchecked")
 		Map<String, CountryThrottlingData> dataMap = _context.getBean("throttlingBean", Map.class);
-		dataMap.forEach((k, v) -> dao.getArchivePayments(k, v));
+		dataMap.forEach((country, bean) -> dao.getArchivePayments(country, bean,fetchSize));
+		logger.error("#############END Unarchival###############" + LocalDateTime.now());
 	}
 
 }

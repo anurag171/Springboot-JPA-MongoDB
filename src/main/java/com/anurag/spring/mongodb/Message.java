@@ -3,11 +3,14 @@ package com.anurag.spring.mongodb;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
- 
+
+@Document(collection = "dailymessage")
 public class Message implements Serializable {
  
     private static final long serialVersionUID = 1L;

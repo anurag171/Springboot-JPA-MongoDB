@@ -30,6 +30,7 @@ import org.springframework.jms.support.converter.MessageType;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -130,6 +131,11 @@ public class BeanRepo {
 		Map<String,CountryThrottlingData> throttlingData = new HashMap<>();
 
 		return throttlingData;
+	}
+	
+	@Bean
+	public RestTemplate restTemplate() {
+	    return new RestTemplate();
 	}
 
 }
